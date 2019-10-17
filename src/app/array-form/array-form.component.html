@@ -1,0 +1,60 @@
+<h1>Please fill the Registration Form</h1>
+<form  [formGroup]="regForm">
+    <div formArrayName="items">
+        <div *ngFor="let item of itemforms.controls; let i=index" 
+              [formGroupName]="i">
+<div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="Name" >
+      <mat-error *ngIf="regForm.controls.Name.touched">Name is required</mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Hobbie" formControlName="Hobbie">
+        <mat-error *ngIf="regForm.controls.Hobbie.touched">Hobbie is required</mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="FavoriteDestination" formControlName="FavoriteDestination">
+        <mat-error *ngIf="regForm.controls.FavoriteDestination.touched">FavoriteDestination is required</mat-error> 
+    </mat-form-field>
+    <mat-form-field>
+   <input matInput placeholder="FavoriteFood" formControlName="FavoriteFood">
+   <mat-error *ngIf="regForm.controls.FavoriteFood.touched">FavoriteFood is required</mat-error> 
+   </mat-form-field>
+   <button mat-stroked-button class="deletebtn" (click)="deleteForm()">DELETE FORM</button>
+  </div>
+  </div>
+    </div>
+</form>
+<br>
+<button mat-stroked-button (click)="addForm()">ADD FORM </button><br>
+<button mat-stroked-button (click)="showForm()">SHOW FORM </button>
+
+ <table *ngIf="test" mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Hobbie">
+    <th mat-header-cell *matHeaderCellDef>Hobbie </th>
+    <td mat-cell *matCellDef="let element"> {{element.Hobbie}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="FavoriteDestination">
+    <th mat-header-cell *matHeaderCellDef> FavoriteDestination </th>
+    <td mat-cell *matCellDef="let element"> {{element.FavoriteDestination}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="FavoriteFood">
+    <th mat-header-cell *matHeaderCellDef> FavoriteFood </th>
+    <td mat-cell *matCellDef="let element"> {{element.FavoriteFood}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  
+ </table>   
